@@ -1,7 +1,9 @@
 package rodrigo.zaniolo.myshowcaseapp.city_list;
 
 import android.databinding.ObservableBoolean;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -22,6 +24,7 @@ import rodrigo.zaniolo.myshowcaseapp.error.RequestErrorFragment;
 import rodrigo.zaniolo.myshowcaseapp.managers.city.CityManager;
 import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
 import rodrigo.zaniolo.myshowcaseapp.models.CityListModel;
+import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 
 public class CityListPresenter implements CityListInterface.Presenter, RecyclerBindingAdapter.OnItemClickListener<CityListModel> {
@@ -31,10 +34,12 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     private MyRecyclerViewConfiguration myRecyclerViewConfiguration;
     private RecyclerBindingAdapter<CityListModel> myRecyclerBindingAdapter;
     private ObservableBoolean running = new ObservableBoolean(false);
+    private OpenWeatherListModel openWeatherListModel;
 
     /* Constructors. */
-    public CityListPresenter(CityListInterface.View myView) {
+    public CityListPresenter(CityListInterface.View myView, OpenWeatherListModel openWeatherListModel) {
         this.myView = myView;
+        this.openWeatherListModel = openWeatherListModel;
 
         setRecycler();
     }
@@ -52,12 +57,55 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
 
     /* Private Methods. */
     private RecyclerBindingAdapter<CityListModel> getAdapter() {
-        return new RecyclerBindingAdapter<>(R.layout.content_city_list_item, BR.city, getCityList());
+        return new RecyclerBindingAdapter<>(R.layout.content_city_list_item, BR.city, parseOpenWeatherListModel());
     }
 
-    private CityListModel cityParser(String city, String country){
-        return new CityListModel(city, country, 22f, null);
+    private CityListModel cityParser(String city, String country, float temp, Drawable icon){
+        return new CityListModel(city, country, temp, icon);
     }
+
+    private ArrayList<CityListModel> parseOpenWeatherListModel(){
+        ArrayList<CityListModel> cityListModels = new ArrayList<>();
+
+        if(openWeatherListModel != null){
+            for (OpenWeatherModel openWeatherModel : openWeatherListModel.getList()) {
+                cityListModels.add(cityParser(
+                        openWeatherModel.getCityName(),
+                        openWeatherModel.getOpenWeatherSys().getCountryCode(),
+                        openWeatherModel.getWeatherMainInfo().getCurrentTemp(),
+                        getIconByCode(openWeatherModel.getWeatherList().get(0).getId())
+                ));
+            }
+            return cityListModels;
+        }else{
+            return getCityList();
+        }
+    }
+
+    private Drawable getIconByCode(int code){
+
+        Drawable icon;
+
+        if(code < 300){
+            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_thunder);
+        }else if(code < 500){
+            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_rainy);
+        }else if(code < 600){
+            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_snowy);
+        }else if(code < 800){
+            icon = null;
+        }else if(code == 800){
+            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_day);
+        }else if (code < 900){
+            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_cloudy);
+        }else{
+            icon = null;
+        }
+
+        return icon;
+    }
+
+    /* *Mocked Data* */
     private ArrayList<CityListModel> getCityList(){
         ArrayList<CityListModel> cityListModels = new ArrayList<>();
 
@@ -65,7 +113,12 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
 
         for (Map.Entry<String, List<String>> entry : cityHash.entrySet()) {
             for (String city : entry.getValue()) {
-                cityListModels.add(cityParser(city, entry.getKey()));
+                cityListModels.add(cityParser(
+                        city,
+                        entry.getKey(),
+                        32f,
+                        ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_day)
+                ));
             }
         }
 
@@ -83,7 +136,7 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     }
 
     private void onCitySelected(int position, CityListModel cityListModel){
-        //TODO - Opend Detail Screen.
+        //TODO - Open Detail Screen.
     }
 
     /* Listeners. */
@@ -109,6 +162,8 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
                             new Callback<OpenWeatherModel>() {
                                 @Override
                                 public void onResponse(@NonNull Call<OpenWeatherModel> call, @NonNull Response<OpenWeatherModel> response) {
+                                    setRunning(false);
+
                                     if(response.isSuccessful()){
                                         //TODO - Open Details Screen.
                                     }else{
@@ -122,6 +177,8 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
 
                                 @Override
                                 public void onFailure(@NonNull Call<OpenWeatherModel> call, @NonNull Throwable t) {
+                                    setRunning(false);
+
                                     RequestErrorFragment.newInstance(city, countryCode, false)
                                             .show(
                                                     myView.getContextActivity().getSupportFragmentManager(),
@@ -130,6 +187,8 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
                                 }
                             });
                 }else{
+                    setRunning(false);
+
                     RequestErrorFragment.newInstance(city, countryCode, true)
                             .show(
                                 myView.getContextActivity().getSupportFragmentManager(),

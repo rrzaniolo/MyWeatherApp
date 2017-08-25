@@ -7,6 +7,7 @@ import android.os.Bundle;
 import rodrigo.zaniolo.myshowcaseapp.R;
 import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
 import rodrigo.zaniolo.myshowcaseapp.databinding.ActivityCityListBinding;
+import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 
 public class CityListActivity extends BaseActivity implements CityListInterface.View {
 
@@ -18,7 +19,7 @@ public class CityListActivity extends BaseActivity implements CityListInterface.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        myPresenter = new CityListPresenter(CityListActivity.this);
+        myPresenter = new CityListPresenter(CityListActivity.this, (OpenWeatherListModel) getIntent().getParcelableExtra("bundle"));
         setUpDataBinding();
     }
 

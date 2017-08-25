@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
-public class Main implements Parcelable{
+public class WeatherMainInfo implements Parcelable{
 
     /* Variables. */
     @SerializedName("temp")
@@ -25,9 +25,9 @@ public class Main implements Parcelable{
     private float airPressure;
 
     /* Constructor. */
-    public Main() { }
+    public WeatherMainInfo() { }
 
-    public Main(float currentTemp, float maxTemp, float minTemp, float humidity, float airPressure) {
+    public WeatherMainInfo(float currentTemp, float maxTemp, float minTemp, float humidity, float airPressure) {
         this.currentTemp = currentTemp;
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
@@ -35,7 +35,7 @@ public class Main implements Parcelable{
         this.airPressure = airPressure;
     }
 
-    protected Main(Parcel in) {
+    protected WeatherMainInfo(Parcel in) {
         currentTemp = in.readFloat();
         maxTemp = in.readFloat();
         minTemp = in.readFloat();
@@ -98,15 +98,15 @@ public class Main implements Parcelable{
         dest.writeFloat(getAirPressure());
     }
 
-    public static final Creator<Main> CREATOR = new Creator<Main>() {
+    public static final Creator<WeatherMainInfo> CREATOR = new Creator<WeatherMainInfo>() {
         @Override
-        public Main createFromParcel(Parcel in) {
-            return new Main(in);
+        public WeatherMainInfo createFromParcel(Parcel in) {
+            return new WeatherMainInfo(in);
         }
 
         @Override
-        public Main[] newArray(int size) {
-            return new Main[size];
+        public WeatherMainInfo[] newArray(int size) {
+            return new WeatherMainInfo[size];
         }
     };
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBindingAdapter.BindingHolder> {
 
     private int holderLayout, variableId;
@@ -69,7 +70,7 @@ public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBind
             binding = DataBindingUtil.bind(view);
         }
 
-        public ViewDataBinding getBinding() {
+        ViewDataBinding getBinding() {
             return binding;
         }
     }

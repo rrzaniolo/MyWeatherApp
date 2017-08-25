@@ -16,7 +16,14 @@ public class OpenWeatherListModel implements Parcelable{
 
     @SerializedName("list")
     private List<OpenWeatherModel> list;
-    
+
+    /* Constructors. */
+    public OpenWeatherListModel() { }
+
+    public OpenWeatherListModel(int count, List<OpenWeatherModel> list) {
+        this.count = count;
+        this.list = list;
+    }
 
     protected OpenWeatherListModel(Parcel in) {
         count = in.readInt();
@@ -28,6 +35,24 @@ public class OpenWeatherListModel implements Parcelable{
         }
     }
 
+    /* Getters and Setters. */
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public List<OpenWeatherModel> getList() {
+        return list;
+    }
+
+    public void setList(List<OpenWeatherModel> list) {
+        this.list = list;
+    }
+
+    /* Methods. */
     @Override
     public int describeContents() {
         return 0;

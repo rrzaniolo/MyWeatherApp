@@ -60,13 +60,13 @@ public class CityListModel {
         this.cityWeatherIcon = cityWeatherIcon;
     }
 
-    public String getFormatedCityTemperatureInCelsius(){
+    public String getFormattedCityTemperatureInCelsius(){
 
-        return ((getCityTemperature() - 32) / 1.8) + Constants.CELSIUS;
+        return (String.format(Locale.getDefault(), "%.2f", getCityTemperature())) + " " + Constants.CELSIUS;
     }
 
-    public String getFormatedCityTemperatureInFahrenheit(){
+    public String getFormattedCityTemperatureInFahrenheit(){
 
-        return getCityTemperature() + Constants.FAHRENHEIT;
+        return String.format(Locale.getDefault(), "%.2f", getCityTemperature()*1.8 + 32) + " " + Constants.FAHRENHEIT;
     }
 }

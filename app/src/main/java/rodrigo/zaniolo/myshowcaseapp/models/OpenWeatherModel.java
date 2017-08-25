@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -17,32 +18,42 @@ public class OpenWeatherModel implements Parcelable{
     @SerializedName("name")
     private String cityName;
 
-    @SerializedName("weatherList")
+    @SerializedName("weather")
     private List<Weather> weatherList;
 
     @SerializedName("main")
-    private Main main;
+    private WeatherMainInfo weatherMainInfo;
 
     @SerializedName("wind")
     private Wind wind;
 
+    @SerializedName("sys")
+    private OpenWeatherSys openWeatherSys;
+
     /* Constructor. */
     public OpenWeatherModel() { }
 
-    public OpenWeatherModel(int cityId, String cityName, List<Weather> weatherList, Main main, Wind wind) {
+    public OpenWeatherModel(int cityId, String cityName, List<Weather> weatherList, WeatherMainInfo weatherMainInfo, Wind wind, OpenWeatherSys openWeatherSys) {
         this.cityId = cityId;
         this.cityName = cityName;
         this.weatherList = weatherList;
-        this.main = main;
+        this.weatherMainInfo = weatherMainInfo;
         this.wind = wind;
+        this.openWeatherSys = openWeatherSys;
     }
 
     protected OpenWeatherModel(Parcel in) {
         cityId = in.readInt();
         cityName = in.readString();
-        weatherList = in.createTypedArrayList(Weather.CREATOR);
-        main = in.readParcelable(Main.class.getClassLoader());
-        wind = in.readParcelable(Wind.class.getClassLoader());
+        if (in.readByte() == 0x01) {
+            weatherList = new ArrayList<Weather>();
+            in.readList(weatherList, Weather.class.getClassLoader());
+        } else {
+            weatherList = null;
+        }
+        weatherMainInfo = (WeatherMainInfo) in.readValue(WeatherMainInfo.class.getClassLoader());
+        wind = (Wind) in.readValue(Wind.class.getClassLoader());
+        openWeatherSys = (OpenWeatherSys) in.readValue(OpenWeatherSys.class.getClassLoader());
     }
 
     /* Getter and Setters. */
@@ -70,12 +81,12 @@ public class OpenWeatherModel implements Parcelable{
         this.weatherList = weatherList;
     }
 
-    public Main getMain() {
-        return main;
+    public WeatherMainInfo getWeatherMainInfo() {
+        return weatherMainInfo;
     }
 
-    public void setMain(Main main) {
-        this.main = main;
+    public void setWeatherMainInfo(WeatherMainInfo weatherMainInfo) {
+        this.weatherMainInfo = weatherMainInfo;
     }
 
     public Wind getWind() {
@@ -86,6 +97,14 @@ public class OpenWeatherModel implements Parcelable{
         this.wind = wind;
     }
 
+    public OpenWeatherSys getOpenWeatherSys() {
+        return openWeatherSys;
+    }
+
+    public void setOpenWeatherSys(OpenWeatherSys openWeatherSys) {
+        this.openWeatherSys = openWeatherSys;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -93,14 +112,21 @@ public class OpenWeatherModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(getCityId());
-        dest.writeString(getCityName());
-        dest.writeList(getWeatherList());
-        dest.writeValue(getMain());
-        dest.writeValue(getWind());
+        dest.writeInt(cityId);
+        dest.writeString(cityName);
+        if (weatherList == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(weatherList);
+        }
+        dest.writeValue(weatherMainInfo);
+        dest.writeValue(wind);
+        dest.writeValue(openWeatherSys);
     }
 
-    public static final Creator<OpenWeatherModel> CREATOR = new Creator<OpenWeatherModel>() {
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<OpenWeatherModel> CREATOR = new Parcelable.Creator<OpenWeatherModel>() {
         @Override
         public OpenWeatherModel createFromParcel(Parcel in) {
             return new OpenWeatherModel(in);
