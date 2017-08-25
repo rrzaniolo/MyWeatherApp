@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- City List -->
+    <dimen name="cityListInformativeTopMargin">24dp</dimen>
+    <dimen name="cityListInformativeStartMargin">24dp</dimen>
+    <dimen name="cityListInformativeEndMargin">24dp</dimen>
+    <dimen name="cityListOptionsTopMargin">24dp</dimen>
+
     <!-- Content City List Item -->
     <dimen name="contentCityListTopMarginContainer">32dp</dimen>
     <dimen name="contentCityListTopPadding">8dp</dimen>

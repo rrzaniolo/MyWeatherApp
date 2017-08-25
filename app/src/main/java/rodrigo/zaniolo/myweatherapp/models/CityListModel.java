@@ -63,7 +63,7 @@ public class CityListModel {
         this.cityWeatherIcon = cityWeatherIcon;
     }
 
-    public String getFormatedCityTemperatureInCelsious(){
+    public String getFormatedCityTemperatureInCelsius(){
 
         return ((getCityTemperature() - 32) / 1.8) + Constants.CELSIUS;
     }

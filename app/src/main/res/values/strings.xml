@@ -3,4 +3,11 @@
     <!-- Main Activity -->
     <string name="main_weather_button">Weather App</string>
 
+    <!-- City List -->
+    <string name="city_list_informative">Choose one of the cities below or enter \nthe city you want.</string>
+    <string name="city_list_city_hint">City name</string>
+    <string name="city_list_country_code_hint">Country code</string>
+    <string name="city_list_button">Check Weather</string>
+
+
 </resources>

@@ -1,5 +1,7 @@
 package rodrigo.zaniolo.myweatherapp.city_list;
 
+import android.databinding.Bindable;
+import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,13 +35,24 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     private CityListInterface.View myView;
     private MyRecyclerViewConfiguration myRecyclerViewConfiguration;
     private RecyclerBindingAdapter<CityListModel> myRecyclerBindingAdapter;
+    private ObservableBoolean running = new ObservableBoolean(false);
 
     /* Constructors. */
-
     public CityListPresenter(CityListInterface.View myView) {
         this.myView = myView;
 
         setRecycler();
+    }
+
+
+    /* Getters and Setter. */
+
+    public ObservableBoolean getRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running.set(running);
     }
 
     /* Private Methods. */
@@ -103,12 +116,55 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     /* Listeners. */
     @Override
     public void onItemClick(int position, View view, CityListModel cityListModel) {
-        onCitySelected(cityListModel);
+        if(!getRunning().get()){
+            onCitySelected(cityListModel);
+        }
+    }
+
+    private View.OnClickListener onCheckWeatherLogic(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRunning(true);
+                RequestManager requestManager = new RequestManager();
+
+                if(requestManager.hasInternetConnection(myView.getContext())){
+                    requestManager.getWeatherData(myView.getCityName(), myView.getCountryCode(),
+                            new Callback<OpenWeatherModel>() {
+                                @Override
+                                public void onResponse(Call<OpenWeatherModel> call, Response<OpenWeatherModel> response) {
+                                    if(response.isSuccessful()){
+                                        //TODO
+                                    }else{
+                                        //TODO
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<OpenWeatherModel> call, Throwable t) {
+                                    //TODO
+                                }
+                            });
+                }else{
+                    //TODO
+                }
+            }
+        };
     }
 
     /* Interface Methods. */
     @Override
     public MyRecyclerViewConfiguration getRecyclerConfiguration() {
         return myRecyclerViewConfiguration;
+    }
+
+    @Override
+    public ObservableBoolean isRunning() {
+        return getRunning();
+    }
+
+    @Override
+    public View.OnClickListener onCheckWeather() {
+        return onCheckWeatherLogic();
     }
 }

@@ -77,7 +77,7 @@
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="24sp"
-                android:text="@{city.formatedCityTemperatureInCelsious()}"
+                android:text="@{city.getFormatedCityTemperatureInCelsius()}"
                 app:font="@{FontName.EXTRABOLD}"/>
         </RelativeLayout>
 

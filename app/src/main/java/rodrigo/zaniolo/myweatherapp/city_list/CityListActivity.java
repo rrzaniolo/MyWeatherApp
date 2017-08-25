@@ -16,6 +16,7 @@ public class CityListActivity extends BaseActivity implements CityListInterface.
 
     /* Variables. */
     private CityListInterface.Presenter myPresenter;
+    ActivityCityListBinding activityCityListBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +43,23 @@ public class CityListActivity extends BaseActivity implements CityListInterface.
 
     /* private Methods. */
     private void setUpDataBinding(){
-        ActivityCityListBinding activityCityListBinding = DataBindingUtil.setContentView(CityListActivity.this, R.layout.activity_city_list);
+        activityCityListBinding = DataBindingUtil.setContentView(CityListActivity.this, R.layout.activity_city_list);
         activityCityListBinding.setPresenter(myPresenter);
     }
 
     /* Interface Methods. */
-
     @Override
     public Context getContext() {
         return CityListActivity.this;
+    }
+
+    @Override
+    public String getCityName() {
+        return activityCityListBinding.myEditTextCityListCity.getText().toString();
+    }
+
+    @Override
+    public String getCountryCode() {
+        return activityCityListBinding.myEditTextCityListCountryCode.getText().toString();
     }
 }
