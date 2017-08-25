@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable name="city" type="rodrigo.zaniolo.myweatherapp.models.CityListModel"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/myRelativeLayoutContentCityListItem"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:paddingTop="@dimen/contentCityListTopPadding"
+            android:paddingBottom="@dimen/contentCityListBottomPadding"
+            android:paddingStart="@dimen/contentCityListStartPadding"
+            android:paddingEnd="@dimen/contentCityListEndPadding"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/myImageViewContentCityListItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="@{city.cityName + `, ` + city.getCountryName()}"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

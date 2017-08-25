@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- Main Activity -->
+    <string name="main_weather_button">Weather App</string>
+
+</resources>

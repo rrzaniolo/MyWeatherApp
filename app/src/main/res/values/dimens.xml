@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Content City List Item -->
+    <dimen name="contentCityListTopMarginContainer">32dp</dimen>
+    <dimen name="contentCityListTopPadding">8dp</dimen>
+    <dimen name="contentCityListBottomPadding">8dp</dimen>
+    <dimen name="contentCityListStartPadding">24dp</dimen>
+    <dimen name="contentCityListEndPadding">24dp</dimen>
+</resources>
