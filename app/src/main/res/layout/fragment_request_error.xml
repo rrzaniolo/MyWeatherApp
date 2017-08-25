@@ -5,6 +5,7 @@
 
     <data>
         <import type="android.view.View" />
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
 
         <variable
             name="presenter"
@@ -46,7 +47,7 @@
                 android:text="@{presenter.getErrorTitle()}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="32sp"
-                app:font="@{Constants.MEDIUM}"/>
+                app:font="@{FontName.MEDIUM}"/>
 
             <TextView
                 android:id="@+id/myTextViewRequestErrorMessage"
@@ -60,7 +61,7 @@
                 android:text="@{presenter.getErrorMessage()}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
-                app:font="@{Constants.LIGHT}"/>
+                app:font="@{FontName.LIGHT}"/>
 
             <RelativeLayout
                 android:id="@+id/myRelativeLayoutRequestErrorTryAgain"
@@ -94,7 +95,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:visibility="@{presenter.isRunning ? View.GONE : View.VISIBLE}"
-                    app:font="@{Constants.REGULAR}" />
+                    app:font="@{FontName.REGULAR}" />
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

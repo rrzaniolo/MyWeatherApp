@@ -16,7 +16,7 @@ public interface RequestErrorInterface {
 
     interface Presenter{
 
-        void dismissErrorDialog();
+        android.view.View.OnClickListener dismissErrorDialog();
         String getErrorTitle();
         String getErrorMessage();
         ObservableBoolean isRunning();

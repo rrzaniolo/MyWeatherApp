@@ -80,7 +80,7 @@ class RequestErrorPresenter implements RequestErrorInterface.Presenter{
                                 @Override
                                 public void onResponse(@NonNull Call<OpenWeatherModel> call, @NonNull Response<OpenWeatherModel> response) {
                                     if(response.isSuccessful()){
-                                        //TODO - Go to Detail Activity.
+                                        //TODO - Go to Detail Screen.
                                         setRunning(false);
                                         dismissErrorDialog();
                                     }else{
@@ -107,12 +107,21 @@ class RequestErrorPresenter implements RequestErrorInterface.Presenter{
         myView.showErrorMessage(getErrorMessage());
     }
 
+    private View.OnClickListener onDismissErrorDialog(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(UIUtils.shouldDismissDialog(myView.getDialogView())){
+                    myView.getDialogView().dismiss();
+                }
+            }
+        };
+    }
+
     /* Interface Methods. */
     @Override
-    public void dismissErrorDialog() {
-        if(UIUtils.shouldDismissDialog(myView.getDialogView())){
-            myView.getDialogView().dismiss();
-        }
+    public View.OnClickListener dismissErrorDialog() {
+        return onDismissErrorDialog();
     }
 
     @Override
