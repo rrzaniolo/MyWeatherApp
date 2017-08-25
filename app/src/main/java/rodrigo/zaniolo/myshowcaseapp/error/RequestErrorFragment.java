@@ -29,7 +29,7 @@ public class RequestErrorFragment extends BaseBottomSheetDialogFragment implemen
         requestErrorFragment.countryCode = countryCode;
         requestErrorFragment.hasConnection = hasConnection;
 
-        return new RequestErrorFragment();
+        return requestErrorFragment;
     }
 
     @Nullable
