@@ -54,7 +54,7 @@
                 android:background="@drawable/shape_underline_white"
                 android:gravity="center"
                 android:hint="@string/city_list_city_hint"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/whiteDarkened"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:font="@{FontName.EXTRABOLD}"/>
@@ -68,7 +68,7 @@
                 android:layout_marginStart="@dimen/cityListInformativeStartMargin"
                 android:gravity="center"
                 android:hint="@string/city_list_country_code_hint"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/whiteDarkened"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:font="@{FontName.EXTRABOLD}"/>
@@ -80,7 +80,7 @@
             android:layout_below="@+id/myLinearLayoutUsrInputContainer"
             style="@style/AppTheme.RelativeLayout.App.Button.White"
             android:gravity="center"
-            android:clickable="true"
+            android:clickable="@{!presenter.isRunning()}"
             android:layout_centerHorizontal="true"
             android:onClick="@{presenter.onCheckWeather()}">
 
