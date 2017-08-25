@@ -34,7 +34,7 @@ public class RequestManager {
     public RequestManager() { }
 
     /* Private Methods. */
-    private  static OkHttpClient getOkHttpClient(){
+    private static OkHttpClient getOkHttpClient(){
         if(okHttpClient == null) {
             synchronized (RequestManager.class) {
                 if (okHttpClient == null) {
