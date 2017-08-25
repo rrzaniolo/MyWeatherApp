@@ -1,11 +1,9 @@
 package rodrigo.zaniolo.myshowcaseapp.city_list;
 
 import android.databinding.ObservableBoolean;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -82,37 +80,15 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
         this.myRecyclerViewConfiguration.setAdapter(myRecyclerBindingAdapter);
     }
 
-    private void onCitySelected(CityListModel cityListModel){
-        RequestManager requestManager = new RequestManager();
-
-        if(requestManager.hasInternetConnection(myView.getContext())){
-            requestManager.getWeatherData(cityListModel.getCityName(), cityListModel.getCityCountryCode(), new Callback<OpenWeatherModel>() {
-                @Override
-                public void onResponse(Call<OpenWeatherModel> call, Response<OpenWeatherModel> response) {
-                    if(response.isSuccessful()) {
-                        Toast.makeText(myView.getContext(), response.body().getCityName(), Toast.LENGTH_LONG).show();
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable("weatherData", response.body());
-                    }else{
-                        //TODO
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<OpenWeatherModel> call, Throwable t) {
-                    Toast.makeText(myView.getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }else{
-            //TODO
-        }
+    private void onCitySelected(int position, CityListModel cityListModel){
+        //TODO
     }
 
     /* Listeners. */
     @Override
     public void onItemClick(int position, View view, CityListModel cityListModel) {
         if(!getRunning().get()){
-            onCitySelected(cityListModel);
+            onCitySelected(position, cityListModel);
         }
     }
 
