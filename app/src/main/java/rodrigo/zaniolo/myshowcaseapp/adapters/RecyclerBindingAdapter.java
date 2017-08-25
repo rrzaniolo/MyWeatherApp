@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
-/**
- * Created by Gustavo Terras on 16/08/17.
- */
-
 public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBindingAdapter.BindingHolder> {
 
     private int holderLayout, variableId;
