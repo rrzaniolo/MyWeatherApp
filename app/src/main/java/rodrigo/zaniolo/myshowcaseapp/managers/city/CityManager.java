@@ -1,4 +1,4 @@
-package rodrigo.zaniolo.myweatherapp.managers.city;
+package rodrigo.zaniolo.myshowcaseapp.managers.city;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
