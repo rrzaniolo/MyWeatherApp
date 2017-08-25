@@ -14,4 +14,7 @@ public class Constants {
     *  - 2673730 : Quito
     *  */
     public static String INITIAL_CITIES_IDS = "2673730,3471766,2643741,3452925,3652462";
+
+    /* Data Transactions Constant. */
+    public static String HAS_CONNECTION = "hasConnection";
 }

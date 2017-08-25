@@ -9,5 +9,10 @@
     <string name="city_list_country_code_hint">Country code</string>
     <string name="city_list_button">Check Weather</string>
 
+    <!-- Request Error Dialog -->
+    <string name="request_error_try_again">Try Again</string>
+    <string name="request_error_no_connection">We could not connect. Please chekc your internet</string>
+    <string name="request_error_generic_error">We had a smal problem retrieving the requested information.</string>
+    <string name="request_error_tittle">SORRY,</string>
 
 </resources>
