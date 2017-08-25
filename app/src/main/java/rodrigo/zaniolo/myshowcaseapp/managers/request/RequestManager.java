@@ -16,7 +16,9 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rodrigo.zaniolo.myshowcaseapp.BuildConfig;
+import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
+import rodrigo.zaniolo.myshowcaseapp.utils.Constants;
 import rodrigo.zaniolo.myshowcaseapp.utils.UrlConstants;
 
 public class RequestManager {
@@ -85,7 +87,7 @@ public class RequestManager {
     }
 
     /**
-     * Method ti get the current weather for a given city in a given country. The request is returned
+     * Method to get the current weather for a given city in a given country. The request is returned
      * in the given callback.
      * @param city - City to search for.
      * @param country - Country of the city.
@@ -98,6 +100,19 @@ public class RequestManager {
 
         String params = city + "," + country;
         Call<OpenWeatherModel> openWeatherModel = openWeatherRequestInterface.getCurrentWeather(params, WEATHER_API_KEY);
+
+        openWeatherModel.enqueue(callback);
+    }
+
+    /**
+     * Method ti get the current weather the five initial cities defined
+     * @param callback - Request Callback.
+     */
+    public void getInitialCitiesWeatherData(Callback<OpenWeatherListModel> callback){
+
+        OpenWeatherRequestInterface openWeatherRequestInterface = getRetrofit().create(OpenWeatherRequestInterface.class);
+
+        Call<OpenWeatherListModel> openWeatherModel = openWeatherRequestInterface.getInitialCitiesWeather(Constants.INITIAL_CITIES_IDS, WEATHER_API_KEY);
 
         openWeatherModel.enqueue(callback);
     }

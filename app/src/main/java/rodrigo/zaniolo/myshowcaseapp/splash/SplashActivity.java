@@ -6,8 +6,9 @@ import android.os.Bundle;
 
 import rodrigo.zaniolo.myshowcaseapp.R;
 import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
+import rodrigo.zaniolo.myshowcaseapp.city_list.CityListActivity;
 import rodrigo.zaniolo.myshowcaseapp.databinding.ActivitySplashBinding;
-import rodrigo.zaniolo.myshowcaseapp.main.MainActivity;
+import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 
 public class SplashActivity extends BaseActivity implements SplashInterface.View {
 
@@ -40,7 +41,8 @@ public class SplashActivity extends BaseActivity implements SplashInterface.View
     }
 
     @Override
-    public void goToMain() {
-        goToActivity(true, MainActivity.class);
+    public void goToMainWithParams(OpenWeatherListModel openWeatherListModel) {
+
+        goToActivityWithParams(true, openWeatherListModel, CityListActivity.class);
     }
 }

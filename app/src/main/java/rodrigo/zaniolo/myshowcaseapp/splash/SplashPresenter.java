@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
-import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
+import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 
 public class SplashPresenter implements SplashInterface.Presenter {
 
@@ -30,15 +30,20 @@ public class SplashPresenter implements SplashInterface.Presenter {
         myManager = new RequestManager();
 
         if(myManager.hasInternetConnection(myView.getContext())){
-            myManager.getWeatherData("Porto Alegre", "BR", new Callback<OpenWeatherModel>() {
+            myManager.getInitialCitiesWeatherData(new Callback<OpenWeatherListModel>() {
                 @Override
-                public void onResponse(Call<OpenWeatherModel> call, Response<OpenWeatherModel> response) {
-                    response.code();
+                public void onResponse(Call<OpenWeatherListModel> call, Response<OpenWeatherListModel> response) {
+                    if (response.isSuccessful()) {
+                        myView.goToMainWithParams(response.body());
+                    }
+                    else {
+                        // TODO: 25/08/17 error
+                    }
                 }
 
                 @Override
-                public void onFailure(Call<OpenWeatherModel> call, Throwable t) {
-                    t.getLocalizedMessage();
+                public void onFailure(Call<OpenWeatherListModel> call, Throwable t) {
+                    // TODO: 25/08/17 error
                 }
             });
         }
