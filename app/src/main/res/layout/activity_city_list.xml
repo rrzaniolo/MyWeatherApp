@@ -6,11 +6,11 @@
 
     <data>
 
-        <import type="rodrigo.zaniolo.myweatherapp.utils.FontUtils.FontName"/>
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
         <import type="android.view.View"/>
         <variable
             name="presenter"
-            type="rodrigo.zaniolo.myweatherapp.city_list.CityListInterface.Presenter"/>
+            type="rodrigo.zaniolo.myshowcaseapp.city_list.CityListInterface.Presenter"/>
     </data>
 
     <RelativeLayout

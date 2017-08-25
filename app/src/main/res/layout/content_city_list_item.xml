@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
-        <import type="rodrigo.zaniolo.myweatherapp.utils.FontUtils.FontName"/>
-        <variable name="city" type="rodrigo.zaniolo.myweatherapp.models.CityListModel"/>
-        <variable name="weather" type="rodrigo.zaniolo.myweatherapp.models.Weather"/>
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
+        <variable name="city" type="rodrigo.zaniolo.myshowcaseapp.models.CityListModel"/>
+        <variable name="weather" type="rodrigo.zaniolo.myshowcaseapp.models.Weather"/>
     </data>
 
     <LinearLayout

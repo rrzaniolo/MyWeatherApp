@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="rodrigo.zaniolo.myweatherapp.utils.FontUtils.FontName"/>
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
         <variable
             name="presenter"
-            type="rodrigo.zaniolo.myweatherapp.splash.SplashInterface.Presenter"/>
+            type="rodrigo.zaniolo.myshowcaseapp.splash.SplashInterface.Presenter"/>
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="rodrigo.zaniolo.myweatherapp.splash.SplashActivity">
+        tools:context="rodrigo.zaniolo.myshowcaseapp.splash.SplashActivity">
 
     </RelativeLayout>
 </layout>

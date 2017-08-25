@@ -6,10 +6,10 @@
 
     <data>
 
-        <import type="rodrigo.zaniolo.myweatherapp.utils.FontUtils.FontName"/>
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
         <variable
             name="presenter"
-            type="rodrigo.zaniolo.myweatherapp.main.MainInterface.Presenter"/>
+            type="rodrigo.zaniolo.myshowcaseapp.main.MainInterface.Presenter"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

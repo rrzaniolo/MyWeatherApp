@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="rodrigo.zaniolo.myweatherapp">
+    package="rodrigo.zaniolo.myshowcaseapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name="rodrigo.zaniolo.myshowcaseapp.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.MainActivity"
+            android:name="rodrigo.zaniolo.myshowcaseapp.main.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".city_list.CityListActivity"
+            android:name="rodrigo.zaniolo.myshowcaseapp.city_list.CityListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
     </application>

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "rodrigo.zaniolo.myweatherapp"
+        applicationId "rodrigo.zaniolo.myshowcaseapp"
         minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
@@ -16,32 +16,32 @@ android {
         enabled = true
     }
 
-    flavorDimensions "My Weather App"
+    flavorDimensions "My Showcase App"
 
     productFlavors {
         dev {
-            applicationId 'rodrigo.zaniolo.myweatherapp.dev'
-            dimension "My Weather App"
-            versionName 'My Weather App 1.0'
+            applicationId 'rodrigo.zaniolo.myshowcaseapp.dev'
+            dimension "My Showcase App"
+            versionName 'My Showcase App 1.0'
             versionNameSuffix '-DEV'
             signingConfig signingConfigs.debug
-            resValue "string", "app_name", "My Weather App Dev"
+            resValue "string", "app_name", "My Showcase App Dev"
         }
         tst {
-            applicationId 'rodrigo.zaniolo.myweatherapp.tst'
-            dimension "My Weather App"
-            versionName 'My Weather App 1.0'
+            applicationId 'rodrigo.zaniolo.myshowcaseapp.tst'
+            dimension "My Showcase App"
+            versionName 'My Showcase App 1.0'
             versionNameSuffix '-DEV'
             signingConfig signingConfigs.debug
-            resValue "string", "app_name", "My Weather App Tst"
+            resValue "string", "app_name", "My Showcase App Tst"
         }
         prod {
-            applicationId 'rodrigo.zaniolo.myweatherapp'
-            dimension "My Weather App"
-            versionName 'My Weather App 1.0'
+            applicationId 'rodrigo.zaniolo.myshowcaseapp'
+            dimension "My Showcase App"
+            versionName 'My Showcase App 1.0'
             versionNameSuffix '-DEV'
             signingConfig signingConfigs.debug
-            resValue "string", "app_name", "My Weather App"
+            resValue "string", "app_name", "My Showcase App App"
         }
     }
 
