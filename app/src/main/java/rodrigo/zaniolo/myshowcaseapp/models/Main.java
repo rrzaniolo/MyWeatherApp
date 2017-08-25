@@ -5,10 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 @SuppressWarnings("unused")
 public class Main implements Parcelable{
 

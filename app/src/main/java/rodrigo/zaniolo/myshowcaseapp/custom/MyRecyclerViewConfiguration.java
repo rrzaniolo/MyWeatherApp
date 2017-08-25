@@ -6,10 +6,6 @@ import android.support.v7.widget.RecyclerView;
 
 import rodrigo.zaniolo.myshowcaseapp.BR;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class MyRecyclerViewConfiguration extends BaseObservable {
 
     private RecyclerView.LayoutManager layoutManager;

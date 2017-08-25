@@ -13,10 +13,6 @@ import static rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName.MEDIUM;
 import static rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName.REGULAR;
 import static rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName.THIN;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class FontUtils {
 
     @Retention(RetentionPolicy.SOURCE)

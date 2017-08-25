@@ -5,10 +5,6 @@ import android.databinding.ObservableBoolean;
 
 import rodrigo.zaniolo.myshowcaseapp.custom.MyRecyclerViewConfiguration;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public interface CityListInterface {
 
     interface View{

@@ -8,10 +8,6 @@ import rodrigo.zaniolo.myshowcaseapp.R;
 import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
 import rodrigo.zaniolo.myshowcaseapp.databinding.ActivityCityListBinding;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class CityListActivity extends BaseActivity implements CityListInterface.View {
 
     /* Variables. */

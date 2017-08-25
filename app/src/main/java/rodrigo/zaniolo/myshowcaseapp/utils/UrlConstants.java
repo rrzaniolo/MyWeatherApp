@@ -1,9 +1,5 @@
 package rodrigo.zaniolo.myshowcaseapp.utils;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class UrlConstants {
 
     /* Weather API */

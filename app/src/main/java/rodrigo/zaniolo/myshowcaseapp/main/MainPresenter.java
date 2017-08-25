@@ -2,14 +2,10 @@ package rodrigo.zaniolo.myshowcaseapp.main;
 
 import android.view.View;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class MainPresenter implements MainInterface.Presenter {
 
     /* Variables. */
-    MainInterface.View myView;
+    private MainInterface.View myView;
 
     /* Constructor. */
     public MainPresenter(MainInterface.View myView) {

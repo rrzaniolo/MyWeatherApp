@@ -5,10 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public interface OpenWeatherRequestInterface {
 
     @GET("weather")

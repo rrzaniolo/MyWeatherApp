@@ -19,10 +19,6 @@ import rodrigo.zaniolo.myshowcaseapp.BuildConfig;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 import rodrigo.zaniolo.myshowcaseapp.utils.UrlConstants;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class RequestManager {
 
     /* Variables. */

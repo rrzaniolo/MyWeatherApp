@@ -9,10 +9,6 @@ import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
 import rodrigo.zaniolo.myshowcaseapp.databinding.ActivitySplashBinding;
 import rodrigo.zaniolo.myshowcaseapp.main.MainActivity;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class SplashActivity extends BaseActivity implements SplashInterface.View {
 
     /* Variables. */

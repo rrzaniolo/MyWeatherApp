@@ -7,10 +7,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 @SuppressWarnings("unused")
 public class OpenWeatherModel implements Parcelable{
 

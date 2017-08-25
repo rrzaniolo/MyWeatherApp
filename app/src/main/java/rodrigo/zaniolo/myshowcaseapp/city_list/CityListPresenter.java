@@ -24,10 +24,6 @@ import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
 import rodrigo.zaniolo.myshowcaseapp.models.CityListModel;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class CityListPresenter implements CityListInterface.Presenter, RecyclerBindingAdapter.OnItemClickListener<CityListModel> {
 
     /* Variables. */

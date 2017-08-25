@@ -6,10 +6,6 @@ import java.util.Locale;
 
 import rodrigo.zaniolo.myshowcaseapp.utils.Constants;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 @SuppressWarnings("unused")
 public class CityListModel {
 

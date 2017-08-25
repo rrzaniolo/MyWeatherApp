@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class CityManager {
 
     /* Variables. */

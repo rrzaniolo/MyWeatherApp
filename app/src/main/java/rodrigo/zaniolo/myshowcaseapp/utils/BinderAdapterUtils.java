@@ -7,10 +7,6 @@ import android.widget.TextView;
 
 import rodrigo.zaniolo.myshowcaseapp.custom.MyRecyclerViewConfiguration;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class BinderAdapterUtils {
 
     @BindingAdapter("font")

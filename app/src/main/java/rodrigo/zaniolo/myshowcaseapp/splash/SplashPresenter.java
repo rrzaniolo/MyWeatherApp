@@ -8,10 +8,6 @@ import retrofit2.Response;
 import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 
-/**
- * Created by rrzaniolo on 24/08/17.
- */
-
 public class SplashPresenter implements SplashInterface.Presenter {
 
     /* Variables. */
