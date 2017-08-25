@@ -1,6 +1,7 @@
 package rodrigo.zaniolo.myshowcaseapp.city_list;
 
 import android.databinding.ObservableBoolean;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -17,6 +18,7 @@ import rodrigo.zaniolo.myshowcaseapp.BR;
 import rodrigo.zaniolo.myshowcaseapp.R;
 import rodrigo.zaniolo.myshowcaseapp.adapters.RecyclerBindingAdapter;
 import rodrigo.zaniolo.myshowcaseapp.custom.MyRecyclerViewConfiguration;
+import rodrigo.zaniolo.myshowcaseapp.error.RequestErrorFragment;
 import rodrigo.zaniolo.myshowcaseapp.managers.city.CityManager;
 import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
 import rodrigo.zaniolo.myshowcaseapp.models.CityListModel;
@@ -81,7 +83,7 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     }
 
     private void onCitySelected(int position, CityListModel cityListModel){
-        //TODO
+        //TODO - Opend Detail Screen.
     }
 
     /* Listeners. */
@@ -99,25 +101,40 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
                 setRunning(true);
                 RequestManager requestManager = new RequestManager();
 
+                final String city = myView.getCityName();
+                final String countryCode = myView.getCountryCode();
+
                 if(requestManager.hasInternetConnection(myView.getContext())){
-                    requestManager.getWeatherData(myView.getCityName(), myView.getCountryCode(),
+                    requestManager.getWeatherData(city, countryCode,
                             new Callback<OpenWeatherModel>() {
                                 @Override
-                                public void onResponse(Call<OpenWeatherModel> call, Response<OpenWeatherModel> response) {
+                                public void onResponse(@NonNull Call<OpenWeatherModel> call, @NonNull Response<OpenWeatherModel> response) {
                                     if(response.isSuccessful()){
-                                        //TODO
+                                        //TODO - Open Details Screen.
                                     }else{
-                                        //TODO
+                                        RequestErrorFragment.newInstance(city, countryCode, false)
+                                                .show(
+                                                        myView.getContextActivity().getSupportFragmentManager(),
+                                                        myView.getContextActivity().getLocalClassName()
+                                                );
                                     }
                                 }
 
                                 @Override
-                                public void onFailure(Call<OpenWeatherModel> call, Throwable t) {
-                                    //TODO
+                                public void onFailure(@NonNull Call<OpenWeatherModel> call, @NonNull Throwable t) {
+                                    RequestErrorFragment.newInstance(city, countryCode, false)
+                                            .show(
+                                                    myView.getContextActivity().getSupportFragmentManager(),
+                                                    myView.getContextActivity().getLocalClassName()
+                                            );
                                 }
                             });
                 }else{
-                    //TODO
+                    RequestErrorFragment.newInstance(city, countryCode, true)
+                            .show(
+                                myView.getContextActivity().getSupportFragmentManager(),
+                                myView.getContextActivity().getLocalClassName()
+                            );
                 }
             }
         };

@@ -50,6 +50,11 @@ public class CityListActivity extends BaseActivity implements CityListInterface.
     }
 
     @Override
+    public BaseActivity getContextActivity() {
+        return CityListActivity.this;
+    }
+
+    @Override
     public String getCityName() {
         return activityCityListBinding.myEditTextCityListCity.getText().toString();
     }
