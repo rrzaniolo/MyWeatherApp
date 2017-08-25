@@ -7,4 +7,9 @@
     <dimen name="contentCityListBottomPadding">8dp</dimen>
     <dimen name="contentCityListStartPadding">24dp</dimen>
     <dimen name="contentCityListEndPadding">24dp</dimen>
+    <dimen name="contentCityListTopMarginText">8dp</dimen>
+    <dimen name="contentCityListBottomMarginText">8dp</dimen>
+    <dimen name="contentCityListStartMarginText">24dp</dimen>
+    <dimen name="contentCityListEndMarginText">24dp</dimen>
+    <dimen name="contentCityListEndMarginImage">24dp</dimen>
 </resources>

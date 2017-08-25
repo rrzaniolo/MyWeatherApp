@@ -1,6 +1,10 @@
 package rodrigo.zaniolo.myweatherapp.models;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.Locale;
+
+import rodrigo.zaniolo.myweatherapp.utils.Constants;
 
 /**
  * Created by rrzaniolo on 24/08/17.
@@ -11,11 +15,15 @@ public class CityListModel {
     /* Variables. */
     private String cityName;
     private String cityCountryCode;
+    private float cityTemperature;
+    private Drawable cityWeatherIcon;
 
     /* Constructor */
-    public CityListModel(String cityName, String cityCountryCode) {
+    public CityListModel(String cityName, String cityCountryCode, float cityTemperature, Drawable cityWeatherIcon) {
         this.cityName = cityName;
         this.cityCountryCode = cityCountryCode;
+        this.cityTemperature = cityTemperature;
+        this.cityWeatherIcon = cityWeatherIcon;
     }
 
     /* Getter and Setters. */
@@ -37,5 +45,31 @@ public class CityListModel {
 
     public String getCountryName(){
         return new Locale("", getCityCountryCode()).getDisplayCountry();
+    }
+
+    public float getCityTemperature() {
+        return cityTemperature;
+    }
+
+    public void setCityTemperature(float cityTemperature) {
+        this.cityTemperature = cityTemperature;
+    }
+
+    public Drawable getCityWeatherIcon() {
+        return cityWeatherIcon;
+    }
+
+    public void setCityWeatherIcon(Drawable cityWeatherIcon) {
+        this.cityWeatherIcon = cityWeatherIcon;
+    }
+
+    public String getFormatedCityTemperatureInCelsious(){
+
+        return ((getCityTemperature() - 32) / 1.8) + Constants.CELSIUS;
+    }
+
+    public String getFormatedCityTemperatureInFahrenheit(){
+
+        return getCityTemperature() + Constants.FAHRENHEIT;
     }
 }

@@ -48,7 +48,7 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     }
 
     private CityListModel cityParser(String city, String country){
-        return new CityListModel(city, country);
+        return new CityListModel(city, country, 22f, null);
     }
     private ArrayList<CityListModel> getCityList(){
         ArrayList<CityListModel> cityListModels = new ArrayList<>();

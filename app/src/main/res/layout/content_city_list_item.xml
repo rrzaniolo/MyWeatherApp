@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
+        <import type="rodrigo.zaniolo.myweatherapp.utils.FontUtils.FontName"/>
         <variable name="city" type="rodrigo.zaniolo.myweatherapp.models.CityListModel"/>
+        <variable name="weather" type="rodrigo.zaniolo.myweatherapp.models.Weather"/>
     </data>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/selector_bg_white">
 
         <RelativeLayout
             android:id="@+id/myRelativeLayoutContentCityListItem"
@@ -20,22 +24,61 @@
             android:paddingTop="@dimen/contentCityListTopPadding"
             android:paddingBottom="@dimen/contentCityListBottomPadding"
             android:paddingStart="@dimen/contentCityListStartPadding"
-            android:paddingEnd="@dimen/contentCityListEndPadding"
-            android:gravity="center">
+            android:paddingEnd="@dimen/contentCityListEndPadding">
 
             <ImageView
                 android:id="@+id/myImageViewContentCityListItem"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@{city.cityWeatherIcon}"/>
+
+            <LinearLayout
+                android:id="@+id/myLinearLayoutLocationContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/myImageViewContentCityListItem">
+
+                <TextView
+                    android:id="@+id/myTextViewContentCityListItemCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/contentCityListTopMarginText"
+                    android:layout_marginStart="@dimen/contentCityListTopMarginText"
+                    android:layout_marginEnd="@dimen/contentCityListEndMarginText"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
+                    android:text="@{city.cityName}"
+                    app:font="@{FontName.BOLD}"/>
+
+                <TextView
+                    android:id="@+id/myTextViewContentCityListItemCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/contentCityListBottomMarginText"
+                    android:layout_marginStart="@dimen/contentCityListTopMarginText"
+                    android:layout_marginEnd="@dimen/contentCityListEndMarginText"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:text="@{city.countryName}"
+                    app:font="@{FontName.MEDIUM}"/>
+            </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/myTextViewContentCityListItemTemp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:text="@{city.cityName + `, ` + city.getCountryName()}"/>
+                android:gravity="end"
+                android:layout_toEndOf="@+id/myLinearLayoutLocationContainer"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                android:text="@{city.formatedCityTemperatureInCelsious()}"
+                app:font="@{FontName.EXTRABOLD}"/>
         </RelativeLayout>
 
     </LinearLayout>
