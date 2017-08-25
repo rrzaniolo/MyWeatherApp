@@ -10,6 +10,7 @@ import rodrigo.zaniolo.myshowcaseapp.utils.Constants;
  * Created by rrzaniolo on 24/08/17.
  */
 
+@SuppressWarnings("unused")
 public class CityListModel {
 
     /* Variables. */
@@ -47,7 +48,7 @@ public class CityListModel {
         return new Locale("", getCityCountryCode()).getDisplayCountry();
     }
 
-    public float getCityTemperature() {
+    private float getCityTemperature() {
         return cityTemperature;
     }
 
