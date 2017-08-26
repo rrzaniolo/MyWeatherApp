@@ -1,8 +1,16 @@
 package rodrigo.zaniolo.myshowcaseapp.managers.city;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+
+import rodrigo.zaniolo.myshowcaseapp.R;
+import rodrigo.zaniolo.myshowcaseapp.utils.Constants;
 
 public class CityManager {
 
@@ -33,6 +41,44 @@ public class CityManager {
         return cityMap;
     }
 
+    /* City Helper Methods. */
+    public Drawable getIconByCode(Context context, int code){
+
+        Drawable icon;
+
+        if(code < 300){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_thunder);
+        }else if(code < 500){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_rainy);
+        }else if(code < 600){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_snowy);
+        }else if(code < 800){
+            icon = null;
+        }else if(code == 800){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_day);
+        }else if (code < 900){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_cloudy);
+        }else{
+            icon = null;
+        }
+
+        return icon;
+    }
+
+    public String getFormattedCityTemperatureInCelsius(float temperature){
+
+        return (String.format(Locale.getDefault(), "%.2f", temperature)) + " " + Constants.CELSIUS;
+    }
+
+    public String getFormattedCityTemperatureInFahrenheit(float temperature){
+
+        return String.format(Locale.getDefault(), "%.2f", temperature*1.8 + 32) + " " + Constants.FAHRENHEIT;
+    }
+
+    public String getCountryName(String countryCode){
+        return new Locale("", countryCode).getDisplayCountry();
+    }
+
     /* Private Methods. */
     private void populateCityList(){
         add("br", "São Paulo");
@@ -41,7 +87,7 @@ public class CityManager {
         add("us", "New York");
     }
 
-    public void add(String country, String city){
+    private void add(String country, String city){
         if(!cityMap.containsKey(country)){
             cityMap.put(country, new ArrayList<String>());
         }

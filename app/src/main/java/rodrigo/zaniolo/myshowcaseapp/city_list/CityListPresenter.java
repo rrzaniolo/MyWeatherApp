@@ -73,36 +73,13 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
                         openWeatherModel.getCityName(),
                         openWeatherModel.getOpenWeatherSys().getCountryCode(),
                         openWeatherModel.getWeatherMainInfo().getCurrentTemp(),
-                        getIconByCode(openWeatherModel.getWeatherList().get(0).getId())
+                        CityManager.getInstance().getIconByCode(myView.getContext(), openWeatherModel.getWeatherList().get(0).getId())
                 ));
             }
             return cityListModels;
         }else{
             return getCityList();
         }
-    }
-
-    private Drawable getIconByCode(int code){
-
-        Drawable icon;
-
-        if(code < 300){
-            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_thunder);
-        }else if(code < 500){
-            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_rainy);
-        }else if(code < 600){
-            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_snowy);
-        }else if(code < 800){
-            icon = null;
-        }else if(code == 800){
-            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_day);
-        }else if (code < 900){
-            icon = ContextCompat.getDrawable(myView.getContext(), R.drawable.ic_cloudy);
-        }else{
-            icon = null;
-        }
-
-        return icon;
     }
 
     /* *Mocked Data* */
@@ -136,7 +113,7 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
     }
 
     private void onCitySelected(int position, CityListModel cityListModel){
-        //TODO - Open Detail Screen.
+        myView.goToDetail(openWeatherListModel.getList().get(position));
     }
 
     /* Listeners. */
@@ -165,7 +142,7 @@ public class CityListPresenter implements CityListInterface.Presenter, RecyclerB
                                     setRunning(false);
 
                                     if(response.isSuccessful()){
-                                        //TODO - Open Details Screen.
+                                        myView.goToDetail(response.body());
                                     }else{
                                         RequestErrorFragment.newInstance(city, countryCode, false)
                                                 .show(

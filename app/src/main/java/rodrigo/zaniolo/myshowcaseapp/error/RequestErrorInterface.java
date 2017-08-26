@@ -2,6 +2,7 @@ package rodrigo.zaniolo.myshowcaseapp.error;
 
 import android.content.Context;
 import android.databinding.ObservableBoolean;
+import android.os.Parcelable;
 
 import rodrigo.zaniolo.myshowcaseapp.base.BaseBottomSheetDialogFragment;
 
@@ -12,6 +13,7 @@ public interface RequestErrorInterface {
         BaseBottomSheetDialogFragment getDialogView();
         void showErrorTitle(String errorTitle);
         void showErrorMessage(String errorMessage);
+        void goToActivityWithParams(Parcelable params, Class target);
     }
 
     interface Presenter{

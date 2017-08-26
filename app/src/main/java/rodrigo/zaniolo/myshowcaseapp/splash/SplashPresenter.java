@@ -34,7 +34,7 @@ public class SplashPresenter implements SplashInterface.Presenter {
                 @Override
                 public void onResponse(Call<OpenWeatherListModel> call, Response<OpenWeatherListModel> response) {
                     if (response.isSuccessful()) {
-                        myView.goToMainWithParams(response.body());
+                        myView.goToListWithParams(response.body());
                     }
                     else {
                         // TODO: 25/08/17 error

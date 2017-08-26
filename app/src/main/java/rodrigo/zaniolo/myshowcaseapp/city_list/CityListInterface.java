@@ -2,6 +2,7 @@ package rodrigo.zaniolo.myshowcaseapp.city_list;
 
 import android.content.Context;
 import android.databinding.ObservableBoolean;
+import android.os.Parcelable;
 
 import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
 import rodrigo.zaniolo.myshowcaseapp.custom.MyRecyclerViewConfiguration;
@@ -13,6 +14,7 @@ public interface CityListInterface {
         BaseActivity getContextActivity();
         String getCityName();
         String getCountryCode();
+        void goToDetail(Parcelable params);
     }
 
     interface Presenter{

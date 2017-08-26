@@ -3,12 +3,14 @@ package rodrigo.zaniolo.myshowcaseapp.error;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import rodrigo.zaniolo.myshowcaseapp.R;
+import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
 import rodrigo.zaniolo.myshowcaseapp.base.BaseBottomSheetDialogFragment;
 import rodrigo.zaniolo.myshowcaseapp.databinding.FragmentRequestErrorBinding;
 
@@ -65,5 +67,10 @@ public class RequestErrorFragment extends BaseBottomSheetDialogFragment implemen
     @Override
     public void showErrorMessage(String errorMessage) {
         fragmentRequestErrorBinding.myTextViewRequestErrorMessage.setText(errorMessage);
+    }
+
+    @Override
+    public void goToActivityWithParams(Parcelable params, Class target) {
+        ((BaseActivity)getActivity()).goToActivityWithParams(false, params, target);
     }
 }

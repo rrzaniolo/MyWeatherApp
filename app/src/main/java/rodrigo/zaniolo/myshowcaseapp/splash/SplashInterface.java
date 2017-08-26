@@ -8,7 +8,7 @@ public interface SplashInterface {
 
     interface View{
         Context getContext();
-        void goToMainWithParams(OpenWeatherListModel openWeatherListModel);
+        void goToListWithParams(OpenWeatherListModel openWeatherListModel);
     }
 
     interface Presenter{

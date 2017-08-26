@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="rodrigo.zaniolo.myshowcaseapp.utils.FontUtils.FontName"/>
+
+        <variable
+            name="presenter"
+            type="rodrigo.zaniolo.myshowcaseapp.city_detail.CityDetailInterface.Presenter"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:background="@drawable/bg_gradient_primary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/shape_unselected_item_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_unselected_item_white"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/myImageViewCityDetailWeatherIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="128dp"
+                    android:layout_weight="0.4"
+                    android:src="@{presenter.getIcon()}"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_weight="0.6">
+
+                    <TextView
+                        android:id="@+id/myTextViewCityDetailName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="26sp"
+                        android:text="@{presenter.getCity()}"
+                        app:font="@{FontName.EXTRABOLD}"/>
+
+                    <TextView
+                        android:id="@+id/myTextViewCityDetailCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="22sp"
+                        android:text="@{presenter.getCountry()}"
+                        app:font="@{FontName.MEDIUM}"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="128dp"
+                    android:layout_weight="0.6"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/city_detail_current"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="26sp"
+                        app:font="@{FontName.EXTRABOLD}"/>
+
+                    <TextView
+                        android:id="@+id/myImageViewCityDetailWeatherCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="22sp"
+                        android:text="@{presenter.getCurrent()}"
+                        app:font="@{FontName.EXTRABOLD}"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|end"
+                    android:layout_weight="0.4"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/city_detail_max"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="22sp"
+                            app:font="@{FontName.EXTRABOLD}"/>
+
+                        <TextView
+                            android:id="@+id/myTextViewCityDetailMax"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:text="@{presenter.getMax()}"
+                            app:font="@{FontName.EXTRABOLD}"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/city_detail_min"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="22sp"
+                            app:font="@{FontName.EXTRABOLD}"/>
+
+                        <TextView
+                            android:id="@+id/myTextViewCityDetailMin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:text="@{presenter.getMin()}"
+                            app:font="@{FontName.MEDIUM}"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/city_detail_humidity"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="26sp"
+                        app:font="@{FontName.EXTRABOLD}"/>
+
+                    <TextView
+                        android:id="@+id/myTextViewCityDetailWeatherHumidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="22sp"
+                        android:text="@{presenter.getHumidity()}"
+                        app:font="@{FontName.EXTRABOLD}"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/city_detail_pressure"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="26sp"
+                        app:font="@{FontName.EXTRABOLD}"/>
+
+                    <TextView
+                        android:id="@+id/myTextViewCityDetailWeatherPressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="22sp"
+                        android:text="@{presenter.getPressure()}"
+                        app:font="@{FontName.EXTRABOLD}"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/myImageViewCityDetailWeatherWindDirection"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:rotation="@{presenter.getRotation()}"
+                    android:src="@drawable/ic_weather_sagittarius"/>
+
+                <TextView
+                    android:id="@+id/myTextViewCityDetailWeatherWindSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="22sp"
+                    android:text="@{presenter.getWindSpeed()}"
+                    app:font="@{FontName.EXTRABOLD}"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

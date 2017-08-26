@@ -8,7 +8,7 @@ import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 
 public interface OpenWeatherRequestInterface {
 
-    @GET("weather")
+    @GET("weather?units=metric")
     Call<OpenWeatherModel> getCurrentWeather(@Query("q") String params, @Query("appid") String appId);
 
     @GET("group?units=metric")

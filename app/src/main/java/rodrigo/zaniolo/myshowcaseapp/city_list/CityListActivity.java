@@ -3,9 +3,11 @@ package rodrigo.zaniolo.myshowcaseapp.city_list;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Parcelable;
 
 import rodrigo.zaniolo.myshowcaseapp.R;
 import rodrigo.zaniolo.myshowcaseapp.base.BaseActivity;
+import rodrigo.zaniolo.myshowcaseapp.city_detail.CityDetailActivity;
 import rodrigo.zaniolo.myshowcaseapp.databinding.ActivityCityListBinding;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 
@@ -63,5 +65,10 @@ public class CityListActivity extends BaseActivity implements CityListInterface.
     @Override
     public String getCountryCode() {
         return activityCityListBinding.myEditTextCityListCountryCode.getText().toString();
+    }
+
+    @Override
+    public void goToDetail(Parcelable params) {
+        goToActivityWithParams(false, params, CityDetailActivity.class);
     }
 }

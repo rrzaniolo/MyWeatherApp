@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="rodrigo.zaniolo.myshowcaseapp.splash.SplashActivity">
+        <activity android:name="rodrigo.zaniolo.myshowcaseapp.splash.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Fullscreen">>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +29,10 @@
         </activity>
         <activity
             android:name="rodrigo.zaniolo.myshowcaseapp.city_list.CityListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="rodrigo.zaniolo.myshowcaseapp.city_detail.CityDetailActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
     </application>

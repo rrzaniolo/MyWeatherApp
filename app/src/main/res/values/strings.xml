@@ -9,6 +9,13 @@
     <string name="city_list_country_code_hint">Country code</string>
     <string name="city_list_button">Check Weather</string>
 
+    <!-- City Detail-->
+    <string name="city_detail_current">Current: </string>
+    <string name="city_detail_max">Max: </string>
+    <string name="city_detail_min">Min: </string>
+    <string name="city_detail_humidity">Humidity: </string>
+    <string name="city_detail_pressure">Pressure: </string>
+
     <!-- Request Error Dialog -->
     <string name="request_error_try_again">Try Again</string>
     <string name="request_error_no_connection">We could not connect. Please chekc your internet</string>

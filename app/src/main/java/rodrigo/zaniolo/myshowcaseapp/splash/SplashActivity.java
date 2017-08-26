@@ -41,7 +41,7 @@ public class SplashActivity extends BaseActivity implements SplashInterface.View
     }
 
     @Override
-    public void goToMainWithParams(OpenWeatherListModel openWeatherListModel) {
+    public void goToListWithParams(OpenWeatherListModel openWeatherListModel) {
 
         goToActivityWithParams(true, openWeatherListModel, CityListActivity.class);
     }

@@ -1,9 +1,8 @@
 package rodrigo.zaniolo.myshowcaseapp.base;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-
-import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherListModel;
 
 public class BaseActivity extends AppCompatActivity{
 
@@ -28,12 +27,12 @@ public class BaseActivity extends AppCompatActivity{
     /**
      *
      * @param hasToFinish - If the activity needs to be finished.
-     * @param openWeatherListModel - Extras to set on activity
+     * @param parcelable - Extras to set on activity
      * @param targetActivity - Activity to Open.
      */
-    public void goToActivityWithParams(boolean hasToFinish, OpenWeatherListModel openWeatherListModel, Class targetActivity) {
+    public void goToActivityWithParams(boolean hasToFinish, Parcelable parcelable, Class targetActivity) {
         Intent intent = new Intent(this, targetActivity);
-        intent.putExtra("bundle", openWeatherListModel);
+        intent.putExtra("bundle", parcelable);
         startActivity(intent);
         onFinish(hasToFinish);
     }

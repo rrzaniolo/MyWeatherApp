@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import rodrigo.zaniolo.myshowcaseapp.R;
+import rodrigo.zaniolo.myshowcaseapp.city_detail.CityDetailActivity;
 import rodrigo.zaniolo.myshowcaseapp.managers.request.RequestManager;
 import rodrigo.zaniolo.myshowcaseapp.models.OpenWeatherModel;
 import rodrigo.zaniolo.myshowcaseapp.utils.UIUtils;
@@ -72,17 +73,20 @@ class RequestErrorPresenter implements RequestErrorInterface.Presenter{
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setRunning(true);
+
                 RequestManager requestManager = new RequestManager();
 
                 if(requestManager.hasInternetConnection(myView.getViewContext())){
+                    setNoConnection(false);
                     requestManager.getWeatherData(getCity(), getCountryCode(),
                             new Callback<OpenWeatherModel>() {
                                 @Override
                                 public void onResponse(@NonNull Call<OpenWeatherModel> call, @NonNull Response<OpenWeatherModel> response) {
                                     if(response.isSuccessful()){
-                                        //TODO - Go to Detail Screen.
                                         setRunning(false);
-                                        dismissErrorDialog();
+                                        checkAndDismiss();
+                                        myView.goToActivityWithParams(response.body(), CityDetailActivity.class);
                                     }else{
                                         callbackError();
                                     }
@@ -95,6 +99,7 @@ class RequestErrorPresenter implements RequestErrorInterface.Presenter{
                             });
 
                 }else{
+                    setNoConnection(true);
                     callbackError();
                 }
             }
@@ -107,13 +112,17 @@ class RequestErrorPresenter implements RequestErrorInterface.Presenter{
         myView.showErrorMessage(getErrorMessage());
     }
 
+    private void checkAndDismiss(){
+        if(UIUtils.shouldDismissDialog(myView.getDialogView())){
+            myView.getDialogView().dismiss();
+        }
+    }
+
     private View.OnClickListener onDismissErrorDialog(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(UIUtils.shouldDismissDialog(myView.getDialogView())){
-                    myView.getDialogView().dismiss();
-                }
+                checkAndDismiss();
             }
         };
     }
