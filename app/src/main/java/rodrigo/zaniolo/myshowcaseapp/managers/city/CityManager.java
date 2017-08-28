@@ -48,9 +48,9 @@ public class CityManager {
 
         if(code < 300){
             icon = ContextCompat.getDrawable(context, R.drawable.ic_thunder);
-        }else if(code < 500){
-            icon = ContextCompat.getDrawable(context, R.drawable.ic_rainy);
         }else if(code < 600){
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_rainy);
+        }else if(code < 700){
             icon = ContextCompat.getDrawable(context, R.drawable.ic_snowy);
         }else if(code < 800){
             icon = null;
